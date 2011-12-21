@@ -33,29 +33,10 @@
    "repositories": [
        {
            "type": "git",
-           "url": "http://hg.example.com/mypackage.git" 
+           "url": "https://github.com/conardcarroll/home" 
        } 
    ],
    "dependencies": {
-       "webkit": "1.2",
-       "ssl": {
-           "gnutls": ["1.0", "2.0"],
-           "openssl": "0.9.8" 
-       } 
+       "backbone": "0.5.3"
    },
-   "implements": [],
-   "os": ["linux", "macos", "win"],
-   "cpu": ["x86", "ppc", "x86_64"],
-   "engines": ["v8", "ejs", "node", "rhino"],
-   "scripts": {
-       "install": "install.js",
-       "uninstall": "uninstall.js",
-       "build": "build.js",
-       "test": "test.js" 
-   },
-   "directories": {
-       "lib": "src/lib",
-       "bin": "local/binaries",
-       "jars": "java" 
-   } 
 }
