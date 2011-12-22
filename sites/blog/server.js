@@ -3,6 +3,7 @@
 
 var express = require('express');
 var Blog = require('./blog').Blog;
+var Chart = require('./chart').Chart;
 
 var app = module.exports = express.createServer();
 
@@ -31,10 +32,13 @@ app.configure('production', function () {
 var blog = new Blog();
 blog.init();
 
+var chart = new Chart();
+chart.init();
+
 app.get('/', function (req, res) {
   blog.findAll(function (error, posts) {
     res.render('index.ejs', { locals: {
-      title: 'Blog',
+      title: 'Conard Blog',
       posts: posts
     }
     });
@@ -78,6 +82,16 @@ app.get('/blog/:id', function (req, res) {
         title: post.title,
         post: post
       }
+    });
+  });
+});
+
+app.get('/charts', function (req, res) {
+  chart.findAll(function (error, charts) {
+    res.render('charts.ejs', { locals: {
+      title: 'Charts',
+      charts: charts
+    }
     });
   });
 });

@@ -1,0 +1,29 @@
+<h1>
+  <%-title%>
+</h1>
+
+<div id="charts">
+  <% charts.forEach(function(chart){ %>
+  <div class="chart">
+    <div class="title">
+      <a href="/chart/<%-chart.RowKey%>">
+        <%-chart.title%>
+      </a>
+    </div>
+
+    <% if (chart.created_at) {%>
+    <div class="created_at">
+      Posted on: <%-chart.created_at%>
+    </div>
+    <% }%>
+
+    <div class="body">
+      <p>
+        <%-chart.body%>
+      </p>
+    </div>
+  </div>
+  <% }) %>
+
+  <a id="newChart" href="/chart/new">New chart</a>
+</div>
