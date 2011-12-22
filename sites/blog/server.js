@@ -7,6 +7,10 @@ var Chart = require('./chart').Chart;
 
 var app = module.exports = express.createServer();
 
+var stylus = require('stylus').middleware( {
+    src: __dirname + '/public',
+    debug: true });
+
 // Configuration
 
 app.configure(function () {
@@ -14,7 +18,7 @@ app.configure(function () {
   app.set('view engine', 'ejs');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(require('stylus').middleware({ src: __dirname + '/public' }));
+  app.use(stylus);
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -38,7 +42,7 @@ chart.init();
 app.get('/', function (req, res) {
   blog.findAll(function (error, posts) {
     res.render('index.ejs', { locals: {
-      title: 'Conard Blog',
+      title: 'Home',
       posts: posts
     }
     });
